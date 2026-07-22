@@ -1,0 +1,103 @@
+export const CATEGORIES = ['All', 'Electronics', 'Accessories', 'Software', 'Books']
+
+export const PRODUCTS = [
+  {
+    id: 'prod-001',
+    name: 'QA Automation Toolkit',
+    category: 'Software',
+    price: 49.99,
+    description: 'Comprehensive suite of test automation utilities for web and API testing.',
+    image: 'https://placehold.co/400x300/6366f1/ffffff?text=QA+Toolkit',
+  },
+  {
+    id: 'prod-002',
+    name: 'Test Data Generator Pro',
+    category: 'Software',
+    price: 29.99,
+    description: 'Generate realistic test data for forms, APIs, and database seeding.',
+    image: 'https://placehold.co/400x300/8b5cf6/ffffff?text=Test+Data',
+  },
+  {
+    id: 'prod-003',
+    name: 'Bug Tracker Keyboard',
+    category: 'Electronics',
+    price: 89.99,
+    description: 'Mechanical keyboard with dedicated bug-report macro keys.',
+    image: 'https://placehold.co/400x300/06b6d4/ffffff?text=Keyboard',
+  },
+  {
+    id: 'prod-004',
+    name: 'Regression Testing Guide',
+    category: 'Books',
+    price: 34.99,
+    description: 'Essential strategies for building reliable regression test suites.',
+    image: 'https://placehold.co/400x300/f59e0b/ffffff?text=Guide',
+  },
+  {
+    id: 'prod-005',
+    name: 'API Mock Server License',
+    category: 'Software',
+    price: 59.99,
+    description: 'One-year license for a lightweight API mocking and stubbing server.',
+    image: 'https://placehold.co/400x300/10b981/ffffff?text=API+Mock',
+  },
+  {
+    id: 'prod-006',
+    name: 'Load Testing USB Drive',
+    category: 'Electronics',
+    price: 24.99,
+    description: 'Portable drive preloaded with JMeter and k6 load test scripts.',
+    image: 'https://placehold.co/400x300/ef4444/ffffff?text=USB',
+  },
+  {
+    id: 'prod-007',
+    name: 'QA Engineer Hoodie',
+    category: 'Accessories',
+    price: 44.99,
+    description: 'Comfortable hoodie with "It works on my machine" embroidered slogan.',
+    image: 'https://placehold.co/400x300/ec4899/ffffff?text=Hoodie',
+  },
+  {
+    id: 'prod-008',
+    name: 'Exploratory Testing Notebook',
+    category: 'Accessories',
+    price: 14.99,
+    description: 'Structured notebook for session-based exploratory testing charters.',
+    image: 'https://placehold.co/400x300/64748b/ffffff?text=Notebook',
+  },
+  {
+    id: 'prod-009',
+    name: 'Selenium WebDriver Cookbook',
+    category: 'Books',
+    price: 39.99,
+    description: 'Recipes and patterns for robust browser automation with Selenium.',
+    image: 'https://placehold.co/400x300/3b82f6/ffffff?text=Selenium',
+  },
+  {
+    id: 'prod-010',
+    name: 'CI/CD Pipeline Monitor',
+    category: 'Electronics',
+    price: 129.99,
+    description: 'Desktop display showing real-time CI pipeline status and test results.',
+    image: 'https://placehold.co/400x300/14b8a6/ffffff?text=Monitor',
+  },
+  {
+    id: 'prod-011',
+    name: 'Test Case Management SaaS',
+    category: 'Software',
+    price: 19.99,
+    description: 'Monthly subscription for cloud-based test case and run management.',
+    image: 'https://placehold.co/400x300/a855f7/ffffff?text=TCM',
+  },
+  {
+    id: 'prod-012',
+    name: 'Quality Assurance Mug',
+    category: 'Accessories',
+    price: 12.99,
+    description: 'Ceramic mug that reads "Breaking prod since 2010" on both sides.',
+    image: 'https://placehold.co/400x300/f97316/ffffff?text=Mug',
+  },
+]
+
+export const VALID_PROMO_CODE = 'DISCOUNT10'
+export const PROMO_DISCOUNT_PERCENT = 10
