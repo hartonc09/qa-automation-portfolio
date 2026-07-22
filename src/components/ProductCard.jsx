@@ -28,7 +28,7 @@ export default function ProductCard({ product }) {
           {product.name}
         </h3>
         <p
-          className="mb-4 flex-1 text-sm text-slate-500"
+          className="mb-4 flex-1 text-sm text-slate-600"
           data-testid={`product-description-${product.id}`}
         >
           {product.description}

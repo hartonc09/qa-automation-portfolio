@@ -47,7 +47,7 @@ export default function QADevTools() {
             <h3 className="text-sm font-semibold" data-testid="qa-dev-tools-heading">
               QA Dev Tools
             </h3>
-            <p className="mt-0.5 text-xs text-slate-400">
+            <p className="mt-0.5 text-xs text-slate-300">
               Simulate network conditions and pre-fill checkout data.
             </p>
           </div>
@@ -67,7 +67,7 @@ export default function QADevTools() {
             />
 
             <div className="border-t border-slate-700 pt-4">
-              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-400">
+              <p className="mb-2 text-xs font-medium uppercase tracking-wide text-slate-300">
                 Payment Autofill
               </p>
               <div className="flex gap-2">

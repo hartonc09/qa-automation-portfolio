@@ -15,7 +15,7 @@ export default function LiveReportsPage() {
       <h1 className="mb-2 text-3xl font-bold text-slate-900" data-testid="live-reports-heading">
         Live Reports
       </h1>
-      <p className="mb-8 text-slate-500">
+      <p className="mb-8 text-slate-600">
         Sample test run results. Select a run to view details.
       </p>
 

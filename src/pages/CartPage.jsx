@@ -7,7 +7,7 @@ export default function CartPage() {
         <h1 className="mb-2 text-3xl font-bold text-slate-900" data-testid="cart-page-heading">
           Cart & Checkout
         </h1>
-        <p className="text-slate-500">
+        <p className="text-slate-600">
           Review your items, apply promo codes, and complete your purchase.
         </p>
       </div>

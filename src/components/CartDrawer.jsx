@@ -54,7 +54,7 @@ export default function CartDrawer({ variant = 'drawer' }) {
           <button
             type="button"
             onClick={handleClose}
-            className="rounded-lg p-2 text-slate-400 transition hover:bg-slate-100 hover:text-slate-600"
+            className="rounded-lg p-2 text-slate-600 transition hover:bg-slate-100 hover:text-slate-800"
             data-testid="cart-close-button"
             aria-label="Close cart"
           >
@@ -74,7 +74,7 @@ export default function CartDrawer({ variant = 'drawer' }) {
               </svg>
             </div>
             <h3 className="mb-2 text-lg font-semibold text-slate-900">Thank you for your order!</h3>
-            <p className="text-sm text-slate-500">Your order has been placed successfully.</p>
+            <p className="text-sm text-slate-600">Your order has been placed successfully.</p>
             <button
               type="button"
               onClick={handleClose}
@@ -88,8 +88,8 @@ export default function CartDrawer({ variant = 'drawer' }) {
           <CheckoutForm onSuccess={handleCheckoutSuccess} />
         ) : items.length === 0 ? (
           <div className="py-12 text-center" data-testid="cart-empty-message">
-            <p className="text-slate-500">Your cart is empty.</p>
-            <p className="mt-1 text-sm text-slate-400">Add products from the store to get started.</p>
+            <p className="text-slate-600">Your cart is empty.</p>
+            <p className="mt-1 text-sm text-slate-600">Add products from the store to get started.</p>
           </div>
         ) : (
           <>
@@ -114,7 +114,7 @@ export default function CartDrawer({ variant = 'drawer' }) {
                       {item.name}
                     </h4>
                     <p
-                      className="text-sm text-slate-500"
+                      className="text-sm text-slate-600"
                       data-testid={`cart-item-price-${item.id}`}
                     >
                       ${item.price.toFixed(2)} each

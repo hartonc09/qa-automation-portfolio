@@ -27,7 +27,7 @@ export default function TestStrategyPage() {
       <h1 className="mb-2 text-3xl font-bold text-slate-900" data-testid="test-strategy-heading">
         Test Strategy
       </h1>
-      <p className="mb-8 text-slate-500">
+      <p className="mb-8 text-slate-600">
         Recommended testing approaches for this QA testbed application.
       </p>
 

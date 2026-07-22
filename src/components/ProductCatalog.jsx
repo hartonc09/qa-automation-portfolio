@@ -26,7 +26,7 @@ export default function ProductCatalog() {
         <h1 className="mb-2 text-3xl font-bold text-slate-900" data-testid="catalog-heading">
           Product Catalog
         </h1>
-        <p className="text-slate-500" data-testid="catalog-subheading">
+        <p className="text-slate-600" data-testid="catalog-subheading">
           Browse QA testing tools and resources. Use search and filters to find products.
         </p>
       </div>
@@ -71,7 +71,7 @@ export default function ProductCatalog() {
           className="rounded-xl border border-dashed border-slate-300 bg-white py-16 text-center"
           data-testid="no-products-message"
         >
-          <p className="text-slate-500">No products match your search or filter criteria.</p>
+          <p className="text-slate-600">No products match your search or filter criteria.</p>
         </div>
       ) : (
         <div
@@ -84,7 +84,7 @@ export default function ProductCatalog() {
         </div>
       )}
 
-      <p className="mt-6 text-sm text-slate-400" data-testid="product-count">
+      <p className="mt-6 text-sm text-slate-600" data-testid="product-count">
         Showing {filteredProducts.length} of {PRODUCTS.length} products
       </p>
     </section>
