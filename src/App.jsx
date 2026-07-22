@@ -8,6 +8,7 @@ import StorePage from './pages/StorePage'
 import CartPage from './pages/CartPage'
 import TestStrategyPage from './pages/TestStrategyPage'
 import LiveReportsPage from './pages/LiveReportsPage'
+import QAMatrix from './pages/QAMatrix' // 1. Import your QAMatrix page
 
 export default function App() {
   return (
@@ -20,6 +21,7 @@ export default function App() {
               <Route path="/" element={<StorePage />} />
               <Route path="/cart" element={<CartPage />} />
               <Route path="/test-strategy" element={<TestStrategyPage />} />
+              <Route path="/qa-matrix" element={<QAMatrix />} /> {/* 2. Add the route */}
               <Route path="/live-reports" element={<LiveReportsPage />} />
             </Routes>
             <CartDrawer variant="drawer" />

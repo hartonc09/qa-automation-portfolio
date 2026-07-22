@@ -3,7 +3,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('E-Commerce Checkout Flow', () => {
   test.beforeEach(async ({ page }) => {
-    await page.goto('/');
+    await page.goto('http://localhost:5173');
   });
 
   test('completes end-to-end checkout with promo code', async ({ page }) => {

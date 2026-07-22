@@ -31,6 +31,9 @@ export default function Navbar() {
           <NavLink to="/test-strategy" className={navLinkClass} data-testid="nav-test-strategy-link">
             Test Strategy
           </NavLink>
+          <NavLink to="/qa-matrix" className={navLinkClass} data-testid="nav-qa-matrix-link">
+            QA Matrix
+          </NavLink>
           <NavLink to="/live-reports" className={navLinkClass} data-testid="nav-live-reports-link">
             Live Reports
           </NavLink>
