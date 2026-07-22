@@ -11,12 +11,36 @@ export default function QAMatrix() {
         </div>
         <div>
           {/* Real-time GitHub Action Status Badge */}
-          <img 
-            src="https://github.com/hartonc09/qa-automation-portfolio/actions/workflows/playwright.yml/badge.svg" 
-            alt="Playwright Test Status" 
-            className="h-8"
-          />
+          <a 
+            href="https://github.com/hartonc09/qa-automation-portfolio/actions/workflows/playwright.yml" 
+            target="_blank" 
+            rel="noreferrer"
+          >
+            <img 
+              src="https://github.com/hartonc09/qa-automation-portfolio/actions/workflows/playwright.yml/badge.svg" 
+              alt="Playwright Test Status" 
+              className="h-8"
+            />
+          </a>
         </div>
+      </div>
+
+      {/* Live Playwright Report Banner */}
+      <div className="bg-indigo-50 border border-indigo-100 rounded-lg p-5 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div>
+          <h2 className="text-lg font-semibold text-indigo-950">Interactive Playwright Test Reports</h2>
+          <p className="text-sm text-indigo-700 mt-1">
+            View detailed test step execution, trace logs, and screenshots from our latest automated CI run.
+          </p>
+        </div>
+        <a 
+          href="https://chrishartonqa.com/reports/" 
+          target="_blank" 
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white font-medium text-sm rounded-md shadow-sm transition whitespace-nowrap"
+        >
+          View Live Report ↗
+        </a>
       </div>
 
       {/* Test Coverage Matrix Table */}

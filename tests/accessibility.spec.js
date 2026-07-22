@@ -3,7 +3,7 @@ import AxeBuilder from '@axe-core/playwright';
 
 test.describe('Accessibility Audits', () => {
   test('storefront catalog meets WCAG 2.1 AA standards', async ({ page }) => {
-    await page.goto('http://localhost:5173');
+    await page.goto('http://chrishartonqa.com');
 
     // Analyze accessibility using @axe-core
     const accessibilityScanResults = await new AxeBuilder({ page })

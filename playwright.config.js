@@ -28,12 +28,8 @@ export default defineConfig({
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
-    /* Base URL to use in actions like `await page.goto('/')`.
-     * Uses BASE_URL env var if set (e.g. in CI/Cloudflare), otherwise defaults to local Vite dev server.
-     */
+    /* Uses BASE_URL from CI/GitHub Actions if available, otherwise falls back to local dev server */
     baseURL: process.env.BASE_URL || 'http://localhost:5173',
-
-    /* Collect trace when retrying the failed test. See https://playwright.dev/docs/trace-viewer */
     trace: 'on-first-retry',
   },
 
