@@ -76,6 +76,50 @@ export default function QAMatrix() {
           </tbody>
         </table>
       </div>
+
+      {/* Detailed Automated Test Cases Section */}
+      <div className="bg-white rounded-lg shadow border border-slate-200 overflow-hidden mt-8">
+        <div className="p-6 border-b border-slate-200">
+          <h2 className="text-xl font-bold text-slate-900">Automated Test Inventory & Scenarios</h2>
+          <p className="text-sm text-slate-600 mt-1">A human-readable breakdown of execution logic for each Playwright test.</p>
+        </div>
+        <table className="w-full text-left border-collapse">
+          <thead className="bg-slate-50 border-b border-slate-200">
+            <tr>
+              <th className="p-4 font-semibold text-slate-700">Spec File</th>
+              <th className="p-4 font-semibold text-slate-700">Test Scenario</th>
+              <th className="p-4 font-semibold text-slate-700">Execution Steps & Verifications</th>
+              <th className="p-4 font-semibold text-slate-700">Type</th>
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-100 text-sm text-slate-600">
+            <tr>
+              <td className="p-4 font-mono text-xs text-indigo-600 font-semibold">e2e-checkout.spec.js</td>
+              <td className="p-4 font-medium text-slate-900">End-to-End Cart & Promo Discount Flow</td>
+              <td className="p-4">
+                Adds item to cart, applies valid promo code, verifies state updates to calculate discount correctly, and completes checkout modal.
+              </td>
+              <td className="p-4"><span className="px-2 py-1 bg-emerald-50 text-emerald-700 rounded text-xs font-semibold">E2E</span></td>
+            </tr>
+            <tr>
+              <td className="p-4 font-mono text-xs text-indigo-600 font-semibold">accessibility.spec.js</td>
+              <td className="p-4 font-medium text-slate-900">Catalog WCAG 2.1 AA Compliance Audit</td>
+              <td className="p-4">
+                Runs automated <code className="bg-slate-100 px-1 rounded">@axe-core/playwright</code> scan across store pages to verify color contrast, ARIA labels, and interactive keyboard target sizes.
+              </td>
+              <td className="p-4"><span className="px-2 py-1 bg-blue-50 text-blue-700 rounded text-xs font-semibold">a11y</span></td>
+            </tr>
+            <tr>
+              <td className="p-4 font-mono text-xs text-indigo-600 font-semibold">chaos-resilience.spec.js</td>
+              <td className="p-4 font-medium text-slate-900">Server Error (500) Network Interception</td>
+              <td className="p-4">
+                Intercepts API network requests using Playwright <code className="bg-slate-100 px-1 rounded">page.route()</code> to mock a 500 Internal Server Error and asserts friendly user UI fallbacks appear.
+              </td>
+              <td className="p-4"><span className="px-2 py-1 bg-amber-50 text-amber-700 rounded text-xs font-semibold">Chaos</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   );
 }
