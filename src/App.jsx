@@ -1,4 +1,4 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { CartProvider } from './context/CartContext'
 import { QADevToolsProvider } from './context/QADevToolsContext'
 import Navbar from './components/Navbar'
@@ -15,30 +15,40 @@ import QAMatrix from './pages/QAMatrix'
 import BlogPage from './pages/BlogPage'
 import BlogPostPage from './pages/BlogPostPage'
 
+function AppContent() {
+  const location = useLocation()
+
+  return (
+    <>
+      <ScrollToTop />
+      <div className="min-h-screen bg-slate-50 flex flex-col" data-testid="app-root">
+        <Navbar />
+        <div className="flex-grow">
+          <Routes>
+            <Route path="/" element={<LandingPage />} />
+            <Route path="/store" element={<StorePage />} />
+            <Route path="/cart" element={<CartPage />} />
+            <Route path="/test-strategy" element={<TestStrategyPage />} />
+            <Route path="/qa-matrix" element={<QAMatrix />} />
+            <Route path="/live-reports" element={<LiveReportsPage />} />
+            <Route path="/blog" element={<BlogPage />} />
+            <Route path="/blog/:id" element={<BlogPostPage />} />
+          </Routes>
+        </div>
+        <Footer />
+        <CartDrawer variant="drawer" />
+        {location.pathname === '/store' && <QADevTools />}
+      </div>
+    </>
+  )
+}
+
 export default function App() {
   return (
     <BrowserRouter>
       <QADevToolsProvider>
         <CartProvider>
-          <ScrollToTop />
-          <div className="min-h-screen bg-slate-50 flex flex-col" data-testid="app-root">
-            <Navbar />
-            <div className="flex-grow">
-              <Routes>
-                <Route path="/" element={<LandingPage />} />
-                <Route path="/store" element={<StorePage />} />
-                <Route path="/cart" element={<CartPage />} />
-                <Route path="/test-strategy" element={<TestStrategyPage />} />
-                <Route path="/qa-matrix" element={<QAMatrix />} />
-                <Route path="/live-reports" element={<LiveReportsPage />} />
-                <Route path="/blog" element={<BlogPage />} />
-                <Route path="/blog/:id" element={<BlogPostPage />} />
-              </Routes>
-            </div>
-            <Footer />
-            <CartDrawer variant="drawer" />
-            <QADevTools />
-          </div>
+          <AppContent />
         </CartProvider>
       </QADevToolsProvider>
     </BrowserRouter>

@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react'
-import { useLocation } from 'react-router-dom'
 import { useQADevTools } from '../context/QADevToolsContext'
 
 function ToggleSwitch({ enabled, onChange, testId, label }) {
@@ -28,7 +27,6 @@ function ToggleSwitch({ enabled, onChange, testId, label }) {
 }
 
 export default function QADevTools() {
-  const location = useLocation()
   const [isOpen, setIsOpen] = useState(false)
   const [position, setPosition] = useState({ x: 16, y: 16 })
   const [isDragging, setIsDragging] = useState(false)
@@ -42,11 +40,6 @@ export default function QADevTools() {
     setSimulate500Error,
     triggerAutofill,
   } = useQADevTools()
-
-  // Only show on store page
-  if (location.pathname !== '/store') {
-    return null
-  }
 
   const handleMouseDown = (e) => {
     setIsDragging(true)
