@@ -5,6 +5,7 @@ import Navbar from './components/Navbar'
 import Footer from './components/Footer'
 import CartDrawer from './components/CartDrawer'
 import QADevTools from './components/QADevTools'
+import ScrollToTop from './components/ScrollToTop'
 import LandingPage from './pages/LandingPage'
 import StorePage from './pages/StorePage'
 import CartPage from './pages/CartPage'
@@ -19,6 +20,7 @@ export default function App() {
     <BrowserRouter>
       <QADevToolsProvider>
         <CartProvider>
+          <ScrollToTop />
           <div className="min-h-screen bg-slate-50 flex flex-col" data-testid="app-root">
             <Navbar />
             <div className="flex-grow">
