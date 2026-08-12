@@ -2,10 +2,92 @@
 
 @theme {
   --font-sans: 'Inter', system-ui, sans-serif;
+  
+  --color-indigo: {
+    50: #eef2ff;
+    100: #e0e7ff;
+    200: #c7d2fe;
+    300: #a5b4fc;
+    400: #818cf8;
+    500: #6366f1;
+    600: #4f46e5;
+    700: #4338ca;
+    800: #3730a3;
+    900: #312e81;
+  };
+}
+
+/* Global Styles */
+html {
+  scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
   min-height: 100vh;
   background-color: #f8fafc;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
+
+/* Selection Color */
+::selection {
+  background-color: #4f46e5;
+  color: white;
+}
+
+::-moz-selection {
+  background-color: #4f46e5;
+  color: white;
+}
+
+/* Scrollbar Styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Form Elements */
+input, textarea, select {
+  font-family: inherit;
+}
+
+/* Code Block Styling */
+code {
+  background-color: #f1f5f9;
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+  font-family: 'Courier New', monospace;
+  color: #1e293b;
+}
+
+pre {
+  background-color: #1e293b;
+  color: #f1f5f9;
+  padding: 1rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+}
+
+pre code {
+  background-color: transparent;
+  padding: 0;
+  color: inherit;
+}
+
+

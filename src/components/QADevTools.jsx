@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useLocation } from 'react-router-dom'
 import { useQADevTools } from '../context/QADevToolsContext'
 
 function ToggleSwitch({ enabled, onChange, testId, label }) {
@@ -27,7 +28,13 @@ function ToggleSwitch({ enabled, onChange, testId, label }) {
 }
 
 export default function QADevTools() {
+  const location = useLocation()
   const [isOpen, setIsOpen] = useState(false)
+  const [position, setPosition] = useState({ x: 16, y: 16 })
+  const [isDragging, setIsDragging] = useState(false)
+  const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 })
+  const [dragStartPos, setDragStartPos] = useState({ x: 0, y: 0 })
+
   const {
     networkDelay,
     setNetworkDelay,
@@ -36,19 +43,73 @@ export default function QADevTools() {
     triggerAutofill,
   } = useQADevTools()
 
+  // Only show on store page
+  if (location.pathname !== '/store') {
+    return null
+  }
+
+  const handleMouseDown = (e) => {
+    setIsDragging(true)
+    setDragStartPos({ x: e.clientX, y: e.clientY })
+    setDragOffset({
+      x: e.clientX - position.x,
+      y: e.clientY - position.y,
+    })
+  }
+
+  const handleButtonClick = (e) => {
+    // Only toggle if we're not dragging (small movement threshold)
+    const dx = Math.abs(e.clientX - dragStartPos.x)
+    const dy = Math.abs(e.clientY - dragStartPos.y)
+    if (dx < 5 && dy < 5) {
+      setIsOpen((prev) => !prev)
+    }
+  }
+
+  useEffect(() => {
+    const handleMouseMove = (e) => {
+      if (isDragging) {
+        setPosition({
+          x: e.clientX - dragOffset.x,
+          y: e.clientY - dragOffset.y,
+        })
+      }
+    }
+
+    const handleMouseUp = () => {
+      setIsDragging(false)
+    }
+
+    if (isDragging) {
+      document.addEventListener('mousemove', handleMouseMove)
+      document.addEventListener('mouseup', handleMouseUp)
+
+      return () => {
+        document.removeEventListener('mousemove', handleMouseMove)
+        document.removeEventListener('mouseup', handleMouseUp)
+      }
+    }
+  }, [isDragging, dragOffset])
+
   return (
-    <div className="fixed right-4 bottom-4 z-[60]" data-testid="qa-dev-tools-container">
+    <div
+      className="fixed z-[60]"
+      style={{ left: `${position.x}px`, top: `${position.y}px`, right: 'auto', bottom: 'auto' }}
+      data-testid="qa-dev-tools-container"
+    >
       {isOpen && (
         <div
           className="mb-3 w-80 overflow-hidden rounded-xl border border-slate-700 bg-slate-900 text-white shadow-2xl"
           data-testid="qa-dev-tools-drawer"
         >
-          <div className="border-b border-slate-700 px-4 py-3">
-            <h3 className="text-sm font-semibold" data-testid="qa-dev-tools-heading">
-              QA Dev Tools
-            </h3>
+          <div
+            className="border-b border-slate-700 px-4 py-3 cursor-move bg-slate-800 select-none"
+            onMouseDown={handleMouseDown}
+            data-testid="qa-dev-tools-heading"
+          >
+            <h3 className="text-sm font-semibold">QA Dev Tools</h3>
             <p className="mt-0.5 text-xs text-slate-300">
-              Simulate network conditions and pre-fill checkout data.
+              Drag to move • Release to set position
             </p>
           </div>
 
@@ -95,8 +156,9 @@ export default function QADevTools() {
 
       <button
         type="button"
-        onClick={() => setIsOpen((prev) => !prev)}
-        className="flex items-center gap-2 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-lg transition hover:bg-slate-700"
+        onMouseDown={handleMouseDown}
+        onClick={handleButtonClick}
+        className="flex items-center gap-2 rounded-full bg-slate-900 px-4 py-3 text-sm font-medium text-white shadow-lg transition hover:bg-slate-700 cursor-grab active:cursor-grabbing"
         data-testid="qa-dev-tools-toggle"
         aria-expanded={isOpen}
         aria-label="Toggle QA Dev Tools"
