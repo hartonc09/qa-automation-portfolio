@@ -1,14 +1,80 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 
 const SAMPLE_REPORTS = [
   { id: 'run-001', suite: 'Smoke Tests', passed: 12, failed: 0, duration: '1m 24s', status: 'passed' },
-  { id: 'run-002', suite: 'Cart E2E', passed: 8, failed: 1, duration: '3m 02s', status: 'failed' },
+  { id: 'run-002', suite: 'Cart E2E', passed: 9, failed: 0, duration: '3m 02s', status: 'passed' },
   { id: 'run-003', suite: 'Checkout Form', passed: 15, failed: 0, duration: '2m 11s', status: 'passed' },
   { id: 'run-004', suite: 'Promo Code', passed: 6, failed: 0, duration: '45s', status: 'passed' },
 ]
 
+function collectSpecs(suites, specs = []) {
+  suites.forEach((suite) => {
+    specs.push(...suite.specs)
+    collectSpecs(suite.suites, specs)
+  })
+  return specs
+}
+
+function formatDuration(duration) {
+  const seconds = Math.round(duration / 1000)
+  return seconds < 60 ? `${seconds}s` : `${Math.floor(seconds / 60)}m ${seconds % 60}s`
+}
+
+function reportsFromResults(results) {
+  const specs = collectSpecs(results.suites)
+  const reportsByFile = new Map()
+
+  specs.forEach((spec) => {
+    const tests = spec.tests.flatMap((test) => test.results)
+    const failed = tests.filter((result) => result.status !== 'passed').length
+    const current = reportsByFile.get(spec.file) || {
+      id: spec.file,
+      suite: spec.file.replace('.spec.js', ''),
+      passed: 0,
+      failed: 0,
+      duration: 0,
+    }
+    current.passed += tests.length - failed
+    current.failed += failed
+    current.duration += tests.reduce((total, result) => total + result.duration, 0)
+    reportsByFile.set(spec.file, current)
+  })
+
+  return [...reportsByFile.values()].map((report) => ({
+    ...report,
+    duration: formatDuration(report.duration),
+    status: report.failed === 0 ? 'passed' : 'failed',
+  }))
+}
+
 export default function LiveReportsPage() {
   const [selectedRun, setSelectedRun] = useState(null)
+  const [reports, setReports] = useState(SAMPLE_REPORTS)
+
+  useEffect(() => {
+    let isMounted = true
+
+    const loadReports = async () => {
+      try {
+        const response = await fetch(`/reports/results.json?ts=${Date.now()}`, {
+          cache: 'no-store',
+        })
+        if (!response.ok) return
+        const results = await response.json()
+        const liveReports = reportsFromResults(results)
+        if (isMounted && liveReports.length > 0) setReports(liveReports)
+      } catch {
+        // Keep the fallback data when the report has not been published yet.
+      }
+    }
+
+    loadReports()
+    const refreshTimer = window.setInterval(loadReports, 30000)
+    return () => {
+      isMounted = false
+      window.clearInterval(refreshTimer)
+    }
+  }, [])
 
   return (
     <main className="mx-auto max-w-4xl px-4 py-8 sm:px-6 lg:px-8" data-testid="live-reports-page">
@@ -32,7 +98,7 @@ export default function LiveReportsPage() {
             </tr>
           </thead>
           <tbody>
-            {SAMPLE_REPORTS.map((report) => (
+            {reports.map((report) => (
               <tr
                 key={report.id}
                 onClick={() => setSelectedRun(report)}

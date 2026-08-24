@@ -2,7 +2,7 @@ import { test, expect } from '@playwright/test';
 
 test.describe('Chaos Engineering & Error Handling', () => {
   test('handles simulated 500 server errors gracefully', async ({ page }) => {
-    await page.goto('/');
+    await page.goto('/store');
 
     // 1. Open QA Dev Tools Drawer, enable 500 error switch, then close panel
     await page.getByRole('button', { name: 'Toggle QA Dev Tools' }).click();
