@@ -24,7 +24,8 @@ export default defineConfig({
   workers: process.env.CI ? 1 : undefined,
   /* Reporter to use: outputs static HTML report to public/reports for Cloudflare Pages */
   reporter: [
-    ['html', { outputFolder: 'public/reports', open: 'never' }]
+    ['html', { outputFolder: 'public/reports', open: 'never' }],
+    ['json', { outputFile: 'public/reports/results.json' }]
   ],
   /* Shared settings for all the projects below. See https://playwright.dev/docs/api/class-testoptions. */
   use: {
