@@ -2,7 +2,7 @@ import { useState } from 'react'
 
 const SAMPLE_REPORTS = [
   { id: 'run-001', suite: 'Smoke Tests', passed: 12, failed: 0, duration: '1m 24s', status: 'passed' },
-  { id: 'run-002', suite: 'Cart E2E', passed: 8, failed: 1, duration: '3m 02s', status: 'failed' },
+  { id: 'run-002', suite: 'Cart E2E', passed: 9, failed: 0, duration: '3m 02s', status: 'passed' },
   { id: 'run-003', suite: 'Checkout Form', passed: 15, failed: 0, duration: '2m 11s', status: 'passed' },
   { id: 'run-004', suite: 'Promo Code', passed: 6, failed: 0, duration: '45s', status: 'passed' },
 ]
