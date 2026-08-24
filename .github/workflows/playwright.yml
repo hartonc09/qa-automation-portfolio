@@ -2,9 +2,9 @@ name: Playwright Tests
 
 on:
   push:
-    branches: [ main ]
   pull_request:
     branches: [ main ]
+  workflow_dispatch:
 
 jobs:
   test:
@@ -33,7 +33,7 @@ jobs:
 
     # 3. Deploy the full dist/ directory (React App + Reports) to Cloudflare Pages
     - name: Deploy Full Site to Cloudflare Pages
-      if: always()
+      if: github.ref == 'refs/heads/main' && success()
       uses: cloudflare/pages-action@v1
       with:
         apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
