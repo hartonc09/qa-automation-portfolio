@@ -26,8 +26,6 @@ jobs:
     # 1. Run tests -> outputs Playwright report HTML directly into public/reports/
     - name: Run Playwright tests
       run: npx playwright test
-      env:
-        BASE_URL: https://chrishartonqa.com
 
     # 2. Build React App -> Vite automatically copies public/ (and public/reports) into dist/
     - name: Build Web Application
