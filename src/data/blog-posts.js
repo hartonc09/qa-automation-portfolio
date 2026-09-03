@@ -9,6 +9,16 @@ export const blogPosts = [
     date: '2026-08-12',
     category: 'Automation',
     image: 'https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&h=400&fit=crop' // Code/tech themed image
+  },
+  {
+    id: 2,
+    title: 'Playwright Trace Viewer: A Time Machine for Test Runs',
+    excerpt: 'Playwright Trace Viewer turns CI debugging from a trial-and-error ritual into a fast investigation with DOM snapshots, network timelines, and precise action logs.',
+    content: `# Playwright Trace Viewer: A Time Machine for Test Runs\n\nBefore I started using Playwright, debugging a failed test in CI usually looked like this:\n\n1. Look at a static, blurry screenshot of the failure.\n2. Read through wall-of-text console logs trying to figure out what happened 3 seconds prior.\n3. Re-run the test locally and hope it fails the exact same way.\n\nWhen I started using Playwright's Trace Viewer, that whole trial-and-error ritual disappeared.\n\nIf you haven't used it yet, Trace Viewer isn't just a static report - it's essentially a time machine for your test runs:\n\n- **Full DOM Snapshots:** You can hover over any step in your test and see what the page looked like Before, During, and After an action. Because it's a real DOM snapshot, you can even open DevTools and inspect elements inside the recording.\n- **Network Call Timelines:** You get a full breakdown of every API request and response happening in the background at the exact millisecond of the failure.\n- **Console & Action Logs:** You can see precise timing, action durations, and locator evaluation in real-time.\n\nInstead of guessing why a click failed or an element didn't load, you can step backward through the execution timeline to see the exact state change that broke things. It turned what used to be a 30-minute investigation into a 2-minute fix.\n\nFor anyone using Playwright in production - do you rely on Trace Viewer for local debugging, or do you mostly use it to inspect CI/CD failure artifacts?\n\n**Tags:** #Playwright #SoftwareTesting #TestAutomation #QAEngineering #DevOps`,
+    author: 'Christopher Harton',
+    date: '2026-09-03',
+    category: 'Automation',
+    image: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&h=400&fit=crop'
   }
 ]
 
